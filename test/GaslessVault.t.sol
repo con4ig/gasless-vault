@@ -5,7 +5,7 @@ import {Test} from "forge-std/Test.sol";
 import {GaslessVault} from "../src/GaslessVault.sol";
 
 /// @notice Uses vm.sign to generate real EIP-712 signatures from a test private key.
-/// No fork needed — pure EVM arithmetic.
+/// No fork needed - pure EVM arithmetic.
 contract GaslessVaultTest is Test {
     GaslessVault vault;
     address      token = address(0xBEEF);
@@ -47,7 +47,7 @@ contract GaslessVaultTest is Test {
         (uint8 v, bytes32 r, bytes32 s) = _sign(owner, AMOUNT, 0, deadline);
         vault.depositWithPermit(owner, AMOUNT, deadline, v, r, s);
 
-        // Same sig again — nonce is now 1, but sig was made for nonce 0 → invalid
+        // Same sig again - nonce is now 1, but sig was made for nonce 0 -> invalid
         vm.expectRevert("Invalid signature");
         vault.depositWithPermit(owner, AMOUNT, deadline, v, r, s);
     }

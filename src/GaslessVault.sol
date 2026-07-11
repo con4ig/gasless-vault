@@ -13,7 +13,7 @@ interface IERC20 {
 contract GaslessVault {
     IERC20 public immutable token;
 
-    // EIP-712 domain — prevents replay across chains and contract addresses
+    // EIP-712 domain - prevents replay across chains and contract addresses
     bytes32 public immutable DOMAIN_SEPARATOR;
 
     // keccak256("DepositPermit(address owner,uint256 amount,uint256 nonce,uint256 deadline)")
